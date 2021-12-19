@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { transformExtent} from 'ol/proj';
 import { Observable} from 'rxjs';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
 
@@ -13,6 +14,13 @@ export class AppComponent implements OnInit {
   @Input() receivedparentmessage: string;
   @Output() receivedata = new EventEmitter<string>();
   map: any;
+  title = 'image-gallery';
+  private data:any = []
+ 
+   
+  
+ 
+  
  
 
   
@@ -23,7 +31,7 @@ export class AppComponent implements OnInit {
     // console.log('Measure Length');
     this.receivedata.emit('data transferred to app from parent');
   }
-    constructor(private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router, private route: ActivatedRoute,) {
       
     }
   ngOnInit() {
@@ -54,6 +62,7 @@ export class AppComponent implements OnInit {
   drawpolygon(event){
           alert('drawpolygon: '+event);
       }
+     
 
 }
 export class ZoominComponent implements OnInit {
@@ -133,7 +142,23 @@ export class DrawpolygonComponent implements OnInit {
     this.receivedata.emit('data transferred from drawpolygon component to app component');
     
   }
+  
 }
+export class LayerComponent {
+  @Input() receivedparentmessage: string;
+  @Output() receivedata = new EventEmitter<string>();
+  
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    const name = this.route.snapshot.params['name'];
+  }
+  layer(event) {
+    console.log('layer');
+    this.receivedata.emit('data transferred from layer component to app component');
+    
+  }
+ }
 
 
 

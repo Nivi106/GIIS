@@ -1,0 +1,8 @@
+<button (click)="getData()">Fetch Data</button>
+<!--The code to display images -->
+<div id = "map" *ngFor="let d of data" style="text-align:center">
+  <h3>
+     {{ d.latitude}}
+     {{d.longitude}}
+   </h3>
+  
