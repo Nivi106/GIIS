@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     # This is our app for emergencies
-    'emergencies',
+    'crime'
 ]
 
 MIDDLEWARE = [
@@ -84,14 +84,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'emergencies',
+      
+        'NAME': 'GIIS',
+        'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'HOST':'localhost',
+        'PORT':'5432'
+    },
+        
     }
-}
+
 
 
 # Password validation
@@ -136,3 +139,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#GDAL_LIBRARY_PATH='C:/GIIS/GIIS/GIIS/venv/Lib/site-packages/osgeo/gdal303.dll'
+#GEOS_LIBRARY_PATH='C:/GIIS/GIIS/GIIS/venv/Lib/site-packages/osgeo/geos_c.dll'
